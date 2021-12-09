@@ -10,6 +10,16 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/");
+router.post("/", async (req, res) => {
+  const argonaute = ArgonauteModel({
+    name: req.body.name,
+    age: req.body.age,
+  });
+
+  await argonaute.save((err, docs) => {
+    if (!err) res.send(docs);
+    else console.log("Error creating new Argonaute: " + err);
+  });
+});
 
 module.exports = router;

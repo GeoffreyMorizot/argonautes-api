@@ -5,6 +5,13 @@ require("./models/dbConfig");
 
 const argonauteRoutes = require("./routes/argonauteController");
 
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
 app.use("/api/argonautes", argonauteRoutes);
 
 app.listen(port, () => {
